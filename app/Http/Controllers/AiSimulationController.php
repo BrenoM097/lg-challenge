@@ -8,9 +8,32 @@ use Illuminate\Support\Facades\Http;
 
 class AiSimulationController extends Controller
 {
+    /**
+     * Verifica se a GEMINI_API_KEY está configurada no .env
+     */
+    public function checkApiKey()
+    {
+        $apiKey = env('GEMINI_API_KEY');
+        
+        if (empty($apiKey)) {
+            return response()->json([
+                'valid' => false,
+                'message' => 'Chave da API Gemini não configurada.'
+            ]);
+        }
+
+        return response()->json(['valid' => true]);
+    }
 
     public function simulate(Request $request)
     {
+        $apiKey = env('GEMINI_API_KEY');
+        if (empty($apiKey)) {
+            return response()->json([
+                'response' => '<span class="text-danger">Erro: Chave da API Gemini não configurada.</span>'
+            ], 400);
+        }
+
         $product = $request->input('product_line');
         $simulatedQuantity = $request->input('simulated_quantity');
 
