@@ -1,6 +1,8 @@
 # Dashboard de Produtividade Industrial com IA (Gemini)
 
-Este projeto é um sistema de monitoramento de métricas de produção fabril integrado à Inteligência Artificial (Google Gemini). O objetivo é consolidar dados diários de volume de fabricação e contagem de defeitos por linha de produto, permitindo que gestores realizem simulações preditivas de cenários e analisem riscos operacionais e gargalos de forma automatizada.
+Desafio técnico proposto pela LG Eletronics.
+
+Este projeto é um sistema de monitoramento de métricas de produção fabril integrado à Inteligência Artificial (Google Gemini) para análise preditiva de riscos. O objetivo é consolidar dados diários de volume de fabricação e contagem de defeitos por linha de produto, permitindo que gestores realizem simulações preditivas de cenários e analisem riscos operacionais e gargalos de forma automatizada.
 
 ---
 
@@ -16,8 +18,8 @@ Este projeto é um sistema de monitoramento de métricas de produção fabril in
 
 1. **Clonar o Repositório e Acessar a Pasta:**
    ```bash
-   git clone <git@github.com:BrenoM097/lg-challenge.git>
-   cd <lg-challenge>
+   git clone git@github.com:BrenoM097/lg-challenge.git
+   cd lg-challenge
    ```
 
 2. **Instalar as Dependências do PHP:**
@@ -70,8 +72,8 @@ Este projeto é um sistema de monitoramento de métricas de produção fabril in
 
 1. **Clonar o Repositório e Acessar a Pasta:**
    ```bash
-   git clone <url-do-repositorio>
-   cd <nome-da-pasta-do-projeto>
+   git clone git@github.com:BrenoM097/lg-challenge.git
+   cd lg-challenge
    ```
 
 2. **Subir os Containers do Docker:**
@@ -172,8 +174,8 @@ Se estiver utilizando o Docker, utilize o comando:
 ```
 O que está sendo testado:
 
-    DashboardTest (Teste de Interface e Renderização):
-    Garante que a rota principal do dashboard carrega com sucesso (HTTP 200). Ele também cria registros temporários no banco de dados e verifica se o código HTML gerado pela view exibe os nomes dos produtos e as quantidades corretas na tabela.
+DashboardTest (Teste de Interface e Renderização):
+Garante que a rota principal do dashboard carrega com sucesso (HTTP 200). Ele também cria registros temporários no banco de dados e verifica se o código HTML gerado pela view exibe os nomes dos produtos e as quantidades corretas na tabela.
 
-    AiSimulationTest (Teste de Integração com a IA):
-    Testa o fluxo de envio e resposta da simulação preditiva. Para que o teste rode rápido, não dependa de internet e não consuma requisições reais da sua chave do Google Gemini, o teste utiliza um Mock (Http::fake) que intercepta a chamada para a API do Google. Ele simula uma resposta de sucesso da inteligência artificial e verifica se o Controller processa e devolve o formato JSON exato que o seu frontend espera receber.
+AiSimulationTest (Teste de Integração com a IA):
+Testa o fluxo de envio e resposta da simulação preditiva. Para que o teste rode rápido, não dependa de internet e não consuma requisições reais da sua chave do Google Gemini, o teste utiliza um Mock (Http::fake) que intercepta a chamada para a API do Google. Ele simula uma resposta de sucesso da inteligência artificial e verifica se o Controller processa e devolve o formato JSON exato que o seu frontend espera receber.
