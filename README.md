@@ -76,18 +76,13 @@ Este projeto é um sistema de monitoramento de métricas de produção fabril in
    cd lg-challenge
    ```
 
-2. **Subir os Containers do Docker:**
-   Execute o comando abaixo para construir e iniciar os serviços (aplicação e banco de dados) em segundo plano:
+2. **Criando arquivo .env:**
+   Crie o arquivo .env a partir do modelo usando o terminal da sua maquina::
    ```bash
-   docker compose up -d --build
+   cp .env.example .env
    ```
-
 3. **Configurar o Arquivo de Ambiente:**
-   Crie o arquivo `.env` a partir do modelo:
-   ```bash
-   docker compose exec app cp .env.example .env
-   ```
-   Abra o arquivo `.env` e configure o `DB_HOST` para apontar para o serviço do banco do Docker (geralmente `db` ou `mysql`, conforme configurado no seu `docker-compose.yml`), além de preencher a credencial da IA:
+   Abra o arquivo `.env` e configure o `DB_HOST` para apontar para o serviço do banco do Docker, além de preencher a credencial da IA(opcional):
    ```env
    DB_CONNECTION=mysql
    DB_HOST=db
@@ -98,13 +93,21 @@ Este projeto é um sistema de monitoramento de métricas de produção fabril in
 
    GEMINI_API_KEY=sua_chave_da_api_aqui
    ```
+4. **Subir os Containers do Docker:**
+   Execute o comando abaixo para construir e iniciar os servicos em segundo plano:
+   ```bash
+   docker compose up -d
+   ```
+5. **Instalando dependencias:**
+   ```bash
+   docker compose exec app composer install
+   ```
 
-4. **Gerar a Chave da Aplicação:**
+6. **Gerar a Chave da Aplicacao:**
    ```bash
    docker compose exec app php artisan key:generate
    ```
-
-5. **Executar as Migrations:**
+7. **Executar as Migrations:**
    ```bash
    docker compose exec app php artisan migrate
    ```
