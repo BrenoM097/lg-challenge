@@ -14,6 +14,9 @@ class AiSimulationTest extends TestCase
     /** @test */
     public function o_controller_retorna_a_analise_da_ia_com_sucesso()
     {
+        $_ENV['GEMINI_API_KEY'] = 'test-api-key';
+        $_SERVER['GEMINI_API_KEY'] = 'test-api-key';
+
         Productivity::create([
             'product_line' => 'TV',
             'production_unit' => 'Planta A',
@@ -21,9 +24,8 @@ class AiSimulationTest extends TestCase
             'defect_count' => 2,
             'production_date' => '2026-01-10',
         ]);
-
         Http::fake([
-            'generativelanguage.googleapis.com/*' => Http::response([
+            '*generativelanguage.googleapis.com*' => Http::response([
                 'candidates' => [
                     [
                         'content' => [
@@ -45,5 +47,7 @@ class AiSimulationTest extends TestCase
         $response->assertExactJson([
             'response' => 'Texto gerado simulado pela IA em ambiente de teste.'
         ]);
+        unset($_ENV['GEMINI_API_KEY']);
+        unset($_SERVER['GEMINI_API_KEY']);
     }
 }
