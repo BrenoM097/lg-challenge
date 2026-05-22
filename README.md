@@ -111,7 +111,16 @@ Este projeto é um sistema de monitoramento de métricas de produção fabril in
    ```bash
    docker compose exec app php artisan migrate
    ```
-   A aplicação estará disponível na porta mapeada no seu arquivo compose (ex: `http://localhost:8080`).
+   A aplicação estará disponível na porta mapeada `http://localhost:8080`.
+    
+
+
+
+8. **Para usuários LINUX:**
+   Você pode esbarrar num erro de permissão da pasta storage dentro do container, se for o caso execute.
+   ```bash
+       docker compose exec app chmod -R 777 storage bootstrap/cache
+   ```
 
 ---
 
@@ -147,6 +156,10 @@ INSERT INTO `productivities` (`production_unit`, `product_line`, `produced_quant
 ('Planta A', 'Ar-Condicionado', 55, 1, '2026-01-15', NOW(), NOW());
 ```
 
+### 📥 Executando Seeder(popula o banco automaticamente)
+```bash
+    docker compose exec app php artisan db:seed
+```
 ---
 
 ## Fórmula de eficiência
