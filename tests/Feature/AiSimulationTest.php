@@ -3,13 +3,15 @@
 namespace Tests\Feature;
 
 use App\Productivity;
+use App\Services\AiSimulationService;
+use App\Services\Contracts\AiSimulationServiceInterface;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class AiSimulationTest extends TestCase
 {
-    use RefreshDatabase; 
+    use RefreshDatabase;
 
     /** @test */
     public function o_controller_retorna_a_analise_da_ia_com_sucesso()
